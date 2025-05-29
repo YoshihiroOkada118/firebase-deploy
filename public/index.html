@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Hosting - モダンWebサイト</title>
+    <meta name="description" content="Firebase Hostingでデプロイされたモダンなウェブサイト">
+    <meta name="keywords" content="Firebase, Hosting, ウェブサイト, モダン, レスポンシブ">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Firebase Hosting - モダンWebサイト">
+    <meta property="og:description" content="Firebase Hostingでデプロイされたモダンなウェブサイト">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fire"></i>
+                <span>Firebase Site</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">概要</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">機能</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">お問い合わせ</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Firebase Hostingへようこそ
+                    <span class="highlight">🔥</span>
+                </h1>
+                <p class="hero-description">
+                    モダンで美しいウェブサイトをFirebase Hostingで高速配信。
+                    レスポンシブデザインと最新技術で最高のユーザー体験を提供します。
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('about')">
+                        <i class="fas fa-rocket"></i>
+                        詳細を見る
+                    </button>
+                    <button class="btn btn-secondary" onclick="showDemo()">
+                        <i class="fas fa-play"></i>
+                        デモを体験
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-code"></i>
+                    <h3>HTML/CSS/JS</h3>
+                    <p>モダン技術</p>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>レスポンシブ</h3>
+                    <p>全デバイス対応</p>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>高速配信</h3>
+                    <p>CDNネットワーク</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Firebase Hostingについて</h2>
+                <p>Googleが提供する高性能なウェブホスティングサービス</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>なぜFirebase Hostingなのか？</h3>
+                    <p>
+                        Firebase Hostingは、静的サイトと動的コンテンツの両方に対応した
+                        高速で安全なウェブホスティングサービスです。
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 高速CDNネットワーク</li>
+                        <li><i class="fas fa-check"></i> 無料SSL証明書</li>
+                        <li><i class="fas fa-check"></i> カスタムドメイン対応</li>
+                        <li><i class="fas fa-check"></i> 簡単デプロイ</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="99.9">0</div>
+                        <div class="stat-label">% アップタイム</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="120">0</div>
+                        <div class="stat-label">+ 拠点のCDN</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label">GB 無料枠</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>主な機能</h2>
+                <p>Firebase Hostingの強力な機能をご紹介</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>高速配信</h3>
+                    <p>世界中のCDNエッジサーバーから高速でコンテンツを配信し、優れたパフォーマンスを実現</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>セキュリティ</h3>
+                    <p>自動SSL証明書とHTTPS強制により、安全で信頼できるウェブサイトを提供</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>簡単設定</h3>
+                    <p>Firebase CLIを使用した簡単なコマンドでワンクリックデプロイが可能</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>詳細分析</h3>
+                    <p>リアルタイムの使用状況分析とパフォーマンス監視機能を内蔵</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>カスタムドメイン</h3>
+                    <p>独自ドメインの設定と管理が簡単。サブドメインも完全対応</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>バージョン管理</h3>
+                    <p>デプロイ履歴の管理とワンクリックロールバック機能</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>お問い合わせ</h2>
+                <p>ご質問やご要望がございましたらお気軽にお問い合わせください</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>メール</h3>
+                        <p>contact@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>電話</h3>
+                        <p>+81-3-1234-5678</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>住所</h3>
+                        <p>東京都渋谷区1-2-3</p>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="お名前" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="メールアドレス" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="メッセージ" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        送信する
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase Site</span>
+                    </div>
+                    <p>Firebase Hostingで構築されたモダンなウェブサイト</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <ul>
+                        <li><a href="#">ウェブホスティング</a></li>
+                        <li><a href="#">データベース</a></li>
+                        <li><a href="#">認証</a></li>
+                        <li><a href="#">ストレージ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>サポート</h3>
+                    <ul>
+                        <li><a href="#">ドキュメント</a></li>
+                        <li><a href="#">チュートリアル</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>会社情報</h3>
+                    <ul>
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">利用規約</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Firebase Site. All rights reserved. Made with ❤️ for Firebase Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🎉 デモ機能</h2>
+            <p>これはFirebase Hostingでデプロイされたサンプルサイトです！</p>
+            <div class="demo-features">
+                <div class="demo-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>レスポンシブデザイン</span>
+                </div>
+                <div class="demo-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>モダンUI/UX</span>
+                </div>
+                <div class="demo-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>高速読み込み</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="closeDemo()">
+                <i class="fas fa-thumbs-up"></i>
+                素晴らしい！
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
