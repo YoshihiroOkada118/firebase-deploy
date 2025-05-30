@@ -410,17 +410,31 @@ section {
     margin-bottom: 1rem;
 }
 
-/* 詳細ページへのボタンを常時表示 */
-.feature-card .btn {
+/* 詳細ページへのボタンを常時表示 - 強制適用 */
+.feature-card .btn,
+.feature-card a.btn,
+.feature-card a.btn-secondary {
     opacity: 1 !important;
     visibility: visible !important;
     display: inline-block !important;
-    transition: all 0.3s ease;
+    position: relative !important;
+    z-index: 10 !important;
+    margin-top: 15px !important;
+    transition: all 0.3s ease !important;
+    background: #6c757d !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    border: none !important;
 }
 
-.feature-card .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+.feature-card .btn:hover,
+.feature-card a.btn:hover,
+.feature-card a.btn-secondary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4) !important;
+    background: #5a6268 !important;
 }
 
 /* Contact Section */
