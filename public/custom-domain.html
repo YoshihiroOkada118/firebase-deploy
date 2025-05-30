@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カスタムドメイン | Firebase Hosting - モダンWebサイト</title>
+    <meta name="description" content="Firebase Hostingのカスタムドメイン機能について詳しく解説。独自ドメインの設定と管理が簡単。サブドメインも完全対応">
+    <meta name="keywords" content="Firebase, Hosting, カスタムドメイン, 独自ドメイン, DNS, SSL">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="カスタムドメイン | Firebase Hosting">
+    <meta property="og:description" content="Firebase Hostingのカスタムドメイン機能について詳しく解説">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        @keyframes domainConnect {
+            0% { transform: translateX(-50px); opacity: 0; }
+            50% { transform: translateX(0); opacity: 0.8; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .domain-animation {
+            animation: domainConnect 2s ease-out;
+        }
+        
+        @keyframes sslSecure {
+            0%, 100% { color: #28a745; }
+            50% { color: #20c997; }
+        }
+        
+        .ssl-indicator {
+            animation: sslSecure 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fire"></i>
+                <span>Firebase Site</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">概要</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">機能</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">お問い合わせ</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="detail-hero" style="background: linear-gradient(135deg, #20c997, #17a2b8);">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a>
+                <span class="separator">/</span>
+                <a href="index.html#features">機能</a>
+                <span class="separator">/</span>
+                <span class="current">カスタムドメイン</span>
+            </div>
+            <h1 class="detail-title">
+                <i class="fas fa-globe domain-animation"></i>
+                カスタムドメイン
+            </h1>
+            <p class="detail-subtitle">
+                独自ドメインの設定と管理が簡単。サブドメインも完全対応で自由なブランディング
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="detail-content">
+        <div class="container">
+            <!-- Overview Section -->
+            <section class="content-section">
+                <h2><i class="fas fa-info-circle"></i> カスタムドメイン概要</h2>
+                <p class="lead">
+                    Firebase Hostingでは、独自ドメインを簡単に設定できます。
+                    SSL証明書の自動発行、DNS設定のガイド、サブドメイン対応など、
+                    プロフェッショナルなWebサイト運営に必要な機能が揃っています。
+                </p>
+                <div class="highlight-box" style="border-left-color: #20c997;">
+                    <h3>🌐 完全なドメイン制御</h3>
+                    <p>
+                        yoursite.com、blog.yoursite.com、api.yoursite.comなど、
+                        メインドメインとサブドメインを自由に設定し、統一されたブランド体験を提供できます。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Domain Setup Metrics -->
+            <section class="content-section">
+                <h2><i class="fas fa-clock"></i> セットアップ時間</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #20c997, #17a2b8);">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="metric-value">2min</div>
+                        <div class="metric-label">ドメイン追加</div>
+                        <div class="metric-description">Firebase Consoleでドメイン追加</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon ssl-indicator" style="background: linear-gradient(135deg, #28a745, #20c997);">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="metric-value">自動</div>
+                        <div class="metric-label">SSL証明書</div>
+                        <div class="metric-description">Let's Encrypt証明書自動発行</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
+                            <i class="fas fa-dns"></i>
+                        </div>
+                        <div class="metric-value">1-48h</div>
+                        <div class="metric-label">DNS伝播</div>
+                        <div class="metric-description">世界的なDNS更新完了</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #ff6b35, #f7931e);">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="metric-value">即座</div>
+                        <div class="metric-label">設定確認</div>
+                        <div class="metric-description">リアルタイム設定状況確認</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Domain Features -->
+            <section class="content-section">
+                <h2><i class="fas fa-star"></i> ドメイン機能</h2>
+                <div class="feature-detail-grid">
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-globe-americas"></i> メインドメイン設定</h3>
+                        <p>
+                            yoursite.comのようなルートドメインを設定。
+                            Aレコードで直接接続し、最適なパフォーマンスを実現します。
+                        </p>
+                        <ul>
+                            <li>ルートドメイン対応</li>
+                            <li>Aレコード自動設定</li>
+                            <li>WWWリダイレクト</li>
+                            <li>SSL自動適用</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-sitemap"></i> サブドメイン管理</h3>
+                        <p>
+                            blog.yoursite.com、api.yoursite.comなど、
+                            無制限のサブドメインを設定できます。
+                        </p>
+                        <ul>
+                            <li>無制限サブドメイン</li>
+                            <li>CNAMEレコード設定</li>
+                            <li>独立SSL証明書</li>
+                            <li>個別設定管理</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-shield-alt"></i> 自動SSL証明書</h3>
+                        <p>
+                            Let's Encryptによる無料SSL証明書が自動発行・更新。
+                            手動での証明書管理は不要です。
+                        </p>
+                        <ul>
+                            <li>自動発行・更新</li>
+                            <li>ワイルドカード対応</li>
+                            <li>TLS 1.3サポート</li>
+                            <li>HSTS強制</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-route"></i> トラフィック制御</h3>
+                        <p>
+                            ドメイン間のリダイレクト、canonical URL設定など、
+                            SEOに配慮したトラフィック制御が可能です。
+                        </p>
+                        <ul>
+                            <li>301/302リダイレクト</li>
+                            <li>Canonical URL設定</li>
+                            <li>トラフィック分散</li>
+                            <li>地域別ルーティング</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-chart-line"></i> ドメイン分析</h3>
+                        <p>
+                            各ドメインのパフォーマンスとアクセス状況を
+                            詳細に分析できます。
+                        </p>
+                        <ul>
+                            <li>ドメイン別統計</li>
+                            <li>SSL証明書監視</li>
+                            <li>DNS応答時間</li>
+                            <li>エラー率監視</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-sync-alt"></i> DNS管理</h3>
+                        <p>
+                            Firebase Console上でDNS設定を確認。
+                            設定ミスを防ぐガイド機能付きです。
+                        </p>
+                        <ul>
+                            <li>DNS設定ガイド</li>
+                            <li>設定検証ツール</li>
+                            <li>伝播状況確認</li>
+                            <li>トラブルシューティング</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Setup Guide -->
+            <section class="content-section">
+                <h2><i class="fas fa-cogs"></i> ドメイン設定手順</h2>
+                <div class="getting-started">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Firebase Consoleでドメイン追加</h3>
+                            <p>Hosting設定でカスタムドメインを追加</p>
+                            <code>Hosting > ドメインを追加 > yoursite.com</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>DNS設定</h3>
+                            <p>ドメインレジストラでDNSレコードを設定</p>
+                            <code>A レコード: @ → 151.101.1.195</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>SSL証明書発行待機</h3>
+                            <p>DNS伝播後、自動でSSL証明書が発行されます</p>
+                            <code>状態: SSL証明書発行中...</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>設定完了確認</h3>
+                            <p>ドメインアクセステストと設定確認</p>
+                            <code>https://yoursite.com でアクセス確認</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DNS Configuration -->
+            <section class="content-section">
+                <h2><i class="fas fa-server"></i> DNS設定詳細</h2>
+                <div class="tech-specs">
+                    <div class="spec-category">
+                        <h3>メインドメイン</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Aレコード</td>
+                                <td>151.101.1.195</td>
+                            </tr>
+                            <tr>
+                                <td>Aレコード</td>
+                                <td>151.101.65.195</td>
+                            </tr>
+                            <tr>
+                                <td>WWW リダイレクト</td>
+                                <td>自動設定</td>
+                            </tr>
+                            <tr>
+                                <td>SSL証明書</td>
+                                <td>自動発行</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="spec-category">
+                        <h3>サブドメイン</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>CNAMEレコード</td>
+                                <td>yourproject.web.app</td>
+                            </tr>
+                            <tr>
+                                <td>SSL証明書</td>
+                                <td>個別自動発行</td>
+                            </tr>
+                            <tr>
+                                <td>設定時間</td>
+                                <td>通常10分以内</td>
+                            </tr>
+                            <tr>
+                                <td>管理</td>
+                                <td>Firebase Console</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="content-section">
+                <div class="cta-section" style="background: linear-gradient(135deg, #e8f8f5, #d1ecf1);">
+                    <h3>🌐 プロフェッショナルなドメインを設定しよう</h3>
+                    <p>Firebase Hostingのカスタムドメイン機能で、ブランドに統一されたWebサイトを構築しましょう。</p>
+                    <div class="cta-buttons">
+                        <a href="https://console.firebase.google.com" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-globe"></i>
+                            ドメイン設定
+                        </a>
+                        <a href="https://firebase.google.com/docs/hosting/custom-domain" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            設定ガイド
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase Site</span>
+                    </div>
+                    <p>Firebase Hostingで構築されたモダンなウェブサイト</p>
+                </div>
+                <div class="footer-section">
+                    <h3>関連リンク</h3>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="fast-delivery.html">高速配信</a></li>
+                        <li><a href="security.html">セキュリティ</a></li>
+                        <li><a href="easy-setup.html">簡単設定</a></li>
+                        <li><a href="analytics.html">詳細分析</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Firebase Site. All rights reserved. Made with ❤️ for Firebase Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

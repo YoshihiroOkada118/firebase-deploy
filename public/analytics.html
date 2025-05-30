@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>詳細分析 | Firebase Hosting - モダンWebサイト</title>
+    <meta name="description" content="Firebase Hostingの詳細分析機能について詳しく解説。リアルタイムの使用状況分析とパフォーマンス監視機能を内蔵">
+    <meta name="keywords" content="Firebase, Hosting, 詳細分析, アナリティクス, 監視, パフォーマンス">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="詳細分析 | Firebase Hosting">
+    <meta property="og:description" content="Firebase Hostingの詳細分析機能について詳しく解説">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        @keyframes chartAnimation {
+            0% { transform: scaleY(0); }
+            100% { transform: scaleY(1); }
+        }
+        
+        .analytics-chart {
+            animation: chartAnimation 2s ease-out;
+            transform-origin: bottom;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 107, 53, 0.6); }
+        }
+        
+        .realtime-indicator {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fire"></i>
+                <span>Firebase Site</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">概要</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">機能</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">お問い合わせ</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="detail-hero" style="background: linear-gradient(135deg, #ff6b35, #f7931e);">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a>
+                <span class="separator">/</span>
+                <a href="index.html#features">機能</a>
+                <span class="separator">/</span>
+                <span class="current">詳細分析</span>
+            </div>
+            <h1 class="detail-title">
+                <i class="fas fa-chart-line analytics-chart"></i>
+                詳細分析
+            </h1>
+            <p class="detail-subtitle">
+                リアルタイムの使用状況分析とパフォーマンス監視機能で深いインサイトを提供
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="detail-content">
+        <div class="container">
+            <!-- Overview Section -->
+            <section class="content-section">
+                <h2><i class="fas fa-info-circle"></i> 分析機能概要</h2>
+                <p class="lead">
+                    Firebase Hostingの分析機能は、Webサイトのパフォーマンスとユーザー行動を
+                    詳細に追跡し、データドリブンな意思決定をサポートします。
+                </p>
+                <div class="highlight-box" style="border-left-color: #ff6b35;">
+                    <h3>📊 リアルタイム分析</h3>
+                    <p>
+                        Google Analyticsとの完全統合により、訪問者数、ページビュー、
+                        ユーザー行動をリアルタイムで監視できます。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Analytics Metrics -->
+            <section class="content-section">
+                <h2><i class="fas fa-tachometer-alt"></i> 分析指標</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon realtime-indicator" style="background: linear-gradient(135deg, #ff6b35, #f7931e);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="metric-value">リアルタイム</div>
+                        <div class="metric-label">アクティブユーザー</div>
+                        <div class="metric-description">現在サイトを閲覧中のユーザー数</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #28a745, #20c997);">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="metric-value">詳細</div>
+                        <div class="metric-label">ページビュー</div>
+                        <div class="metric-description">ページ別の詳細なアクセス統計</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <div class="metric-value">< 1sec</div>
+                        <div class="metric-label">データ更新</div>
+                        <div class="metric-description">ほぼリアルタイムでの分析データ更新</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #17a2b8, #6610f2);">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="metric-value">全デバイス</div>
+                        <div class="metric-label">デバイス分析</div>
+                        <div class="metric-description">PC、モバイル、タブレット別統計</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Features -->
+            <section class="content-section">
+                <h2><i class="fas fa-chart-bar"></i> 主要分析機能</h2>
+                <div class="feature-detail-grid">
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-chart-pie"></i> ユーザー行動分析</h3>
+                        <p>
+                            訪問者の行動パターンを詳細に分析。
+                            ページ滞在時間、離脱率、コンバージョン経路を可視化します。
+                        </p>
+                        <ul>
+                            <li>ページ別滞在時間</li>
+                            <li>ユーザーフロー分析</li>
+                            <li>離脱ページ特定</li>
+                            <li>コンバージョン追跡</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-bolt"></i> パフォーマンス監視</h3>
+                        <p>
+                            Core Web Vitalsを含む詳細なパフォーマンス指標で、
+                            ユーザー体験の質を継続的に監視します。
+                        </p>
+                        <ul>
+                            <li>ページ読み込み速度</li>
+                            <li>Core Web Vitals</li>
+                            <li>ネットワーク分析</li>
+                            <li>エラー率監視</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-globe"></i> 地域別分析</h3>
+                        <p>
+                            世界中のユーザーアクセスを地域別に分析。
+                            CDN効果やローカライゼーションの効果を測定できます。
+                        </p>
+                        <ul>
+                            <li>国・地域別アクセス</li>
+                            <li>言語設定分析</li>
+                            <li>時間帯別トラフィック</li>
+                            <li>地域別パフォーマンス</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-bell"></i> カスタムアラート</h3>
+                        <p>
+                            重要な指標の変化を自動検知し、
+                            即座にアラートを送信します。
+                        </p>
+                        <ul>
+                            <li>トラフィック急増検知</li>
+                            <li>エラー率上昇警告</li>
+                            <li>パフォーマンス低下通知</li>
+                            <li>カスタム閾値設定</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-download"></i> データエクスポート</h3>
+                        <p>
+                            分析データを様々な形式でエクスポート。
+                            外部ツールとの連携や詳細分析が可能です。
+                        </p>
+                        <ul>
+                            <li>CSV/JSON エクスポート</li>
+                            <li>API 経由でのデータ取得</li>
+                            <li>定期レポート生成</li>
+                            <li>BigQuery 連携</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-shield-alt"></i> プライバシー準拠</h3>
+                        <p>
+                            GDPR、CCPA等のプライバシー法規に準拠した
+                            データ収集と分析を実現します。
+                        </p>
+                        <ul>
+                            <li>プライバシー設定</li>
+                            <li>データ匿名化</li>
+                            <li>同意管理</li>
+                            <li>データ保持期間設定</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Tools -->
+            <section class="content-section">
+                <h2><i class="fas fa-tools"></i> 分析ツール統合</h2>
+                <div class="tech-specs">
+                    <div class="spec-category">
+                        <h3>Google サービス</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Google Analytics 4</td>
+                                <td>完全統合</td>
+                            </tr>
+                            <tr>
+                                <td>Search Console</td>
+                                <td>SEO分析連携</td>
+                            </tr>
+                            <tr>
+                                <td>PageSpeed Insights</td>
+                                <td>パフォーマンス分析</td>
+                            </tr>
+                            <tr>
+                                <td>Tag Manager</td>
+                                <td>タグ管理システム</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="spec-category">
+                        <h3>サードパーティ</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Hotjar</td>
+                                <td>ヒートマップ分析</td>
+                            </tr>
+                            <tr>
+                                <td>Mixpanel</td>
+                                <td>イベントトラッキング</td>
+                            </tr>
+                            <tr>
+                                <td>Amplitude</td>
+                                <td>ユーザー行動分析</td>
+                            </tr>
+                            <tr>
+                                <td>カスタムツール</td>
+                                <td>API 経由連携</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Implementation Guide -->
+            <section class="content-section">
+                <h2><i class="fas fa-code"></i> 実装ガイド</h2>
+                <div class="getting-started">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Google Analytics設定</h3>
+                            <p>Google Analytics 4プロパティを作成し、測定IDを取得</p>
+                            <code><!-- Google tag (gtag.js) -->
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"&gt;&lt;/script&gt;</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Firebase Analytics有効化</h3>
+                            <p>Firebase ConsoleでAnalyticsを有効化</p>
+                            <code>firebase init analytics</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Performance Monitoring設定</h3>
+                            <p>パフォーマンス監視を有効にして詳細データを収集</p>
+                            <code>import { getPerformance } from 'firebase/performance';</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>カスタムイベント設定</h3>
+                            <p>ビジネス固有のイベントを追跡設定</p>
+                            <code>gtag('event', 'custom_event', { 'custom_parameter': 'value' });</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="content-section">
+                <div class="cta-section" style="background: linear-gradient(135deg, #fff5f0, #ffe8e1);">
+                    <h3>📈 データドリブンな成長を始めよう</h3>
+                    <p>Firebase Hostingの詳細分析で、Webサイトのパフォーマンスを最大化しましょう。</p>
+                    <div class="cta-buttons">
+                        <a href="https://console.firebase.google.com" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-chart-line"></i>
+                            分析を開始
+                        </a>
+                        <a href="https://firebase.google.com/docs/hosting/web-analytics" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            分析ガイド
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase Site</span>
+                    </div>
+                    <p>Firebase Hostingで構築されたモダンなウェブサイト</p>
+                </div>
+                <div class="footer-section">
+                    <h3>関連リンク</h3>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="fast-delivery.html">高速配信</a></li>
+                        <li><a href="security.html">セキュリティ</a></li>
+                        <li><a href="easy-setup.html">簡単設定</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Firebase Site. All rights reserved. Made with ❤️ for Firebase Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

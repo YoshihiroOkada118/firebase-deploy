@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡単設定 | Firebase Hosting - モダンWebサイト</title>
+    <meta name="description" content="Firebase Hostingの簡単設定機能について詳しく解説。Firebase CLIを使用した簡単なコマンドでワンクリックデプロイが可能">
+    <meta name="keywords" content="Firebase, Hosting, 簡単設定, CLI, デプロイ, 設定">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="簡単設定 | Firebase Hosting">
+    <meta property="og:description" content="Firebase Hostingの簡単設定機能について詳しく解説">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        @keyframes gearSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .setup-gear {
+            animation: gearSpin 4s linear infinite;
+        }
+        
+        .command-highlight {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fire"></i>
+                <span>Firebase Site</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">概要</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">機能</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">お問い合わせ</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="detail-hero" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a>
+                <span class="separator">/</span>
+                <a href="index.html#features">機能</a>
+                <span class="separator">/</span>
+                <span class="current">簡単設定</span>
+            </div>
+            <h1 class="detail-title">
+                <i class="fas fa-cog setup-gear"></i>
+                簡単設定
+            </h1>
+            <p class="detail-subtitle">
+                Firebase CLIを使用した簡単なコマンドでワンクリックデプロイが可能
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="detail-content">
+        <div class="container">
+            <!-- Overview Section -->
+            <section class="content-section">
+                <h2><i class="fas fa-info-circle"></i> 設定の簡単さ</h2>
+                <p class="lead">
+                    Firebase Hostingは、開発者が最短時間でWebサイトをデプロイできるよう設計されています。
+                    複雑な設定は不要で、数分でグローバル配信を開始できます。
+                </p>
+                <div class="highlight-box" style="border-left-color: #667eea;">
+                    <h3>⚡ 3ステップデプロイ</h3>
+                    <p>
+                        Firebase CLIをインストールし、プロジェクトを初期化して、デプロイするだけ。
+                        わずか3つのコマンドで、あなたのWebサイトが世界中からアクセス可能になります。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Setup Time Metrics -->
+            <section class="content-section">
+                <h2><i class="fas fa-stopwatch"></i> セットアップ時間</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="metric-value">30sec</div>
+                        <div class="metric-label">CLI インストール</div>
+                        <div class="metric-description">npmで簡単インストール</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #28a745, #20c997);">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="metric-value">2min</div>
+                        <div class="metric-label">初期化</div>
+                        <div class="metric-description">プロジェクト設定と認証</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #ff6b35, #f7931e);">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="metric-value">30sec</div>
+                        <div class="metric-label">デプロイ</div>
+                        <div class="metric-description">ファイルアップロードと配信開始</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon" style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="metric-value">< 3min</div>
+                        <div class="metric-label">合計時間</div>
+                        <div class="metric-description">ゼロから本番環境まで</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Setup Steps -->
+            <section class="content-section">
+                <h2><i class="fas fa-list-ol"></i> セットアップステップ</h2>
+                <div class="getting-started">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Firebase CLI のインストール</h3>
+                            <p>Node.js環境でFirebase CLIをグローバルインストール</p>
+                            <code>npm install -g firebase-tools</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Firebaseにログイン</h3>
+                            <p>Googleアカウントでログインし、認証を完了</p>
+                            <code>firebase login</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>プロジェクト初期化</h3>
+                            <p>Hostingを選択し、設定ファイルを生成</p>
+                            <code>firebase init hosting</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>デプロイ実行</h3>
+                            <p>ファイルをアップロードし、即座に本番公開</p>
+                            <code>firebase deploy</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="content-section">
+                <h2><i class="fas fa-magic"></i> 簡単設定の特徴</h2>
+                <div class="feature-detail-grid">
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-terminal"></i> コマンドライン操作</h3>
+                        <p>
+                            GUI不要のシンプルなコマンドライン操作。
+                            開発者に優しいCLIツールで効率的な作業が可能です。
+                        </p>
+                        <ul>
+                            <li>直感的なコマンド構造</li>
+                            <li>詳細なヘルプ機能</li>
+                            <li>エラーメッセージが分かりやすい</li>
+                            <li>自動補完サポート</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-file-code"></i> 自動設定生成</h3>
+                        <p>
+                            firebase.jsonとfirebaserc設定ファイルが自動生成。
+                            プロジェクト構造に応じた最適な設定を提案します。
+                        </p>
+                        <ul>
+                            <li>インタラクティブ設定</li>
+                            <li>デフォルト値の自動設定</li>
+                            <li>カスタマイズ可能な設定</li>
+                            <li>設定の検証機能</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-sync"></i> 継続的デプロイ</h3>
+                        <p>
+                            GitHub Actionsとの統合により、
+                            コードプッシュ時の自動デプロイを簡単設定。
+                        </p>
+                        <ul>
+                            <li>CI/CD パイプライン統合</li>
+                            <li>自動テスト実行</li>
+                            <li>プレビューURL生成</li>
+                            <li>ロールバック機能</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3><i class="fas fa-puzzle-piece"></i> フレームワーク統合</h3>
+                        <p>
+                            React、Vue、Angular、Next.jsなど、
+                            主要フレームワークとの統合設定をサポート。
+                        </p>
+                        <ul>
+                            <li>フレームワーク自動検出</li>
+                            <li>ビルド設定の最適化</li>
+                            <li>SPA ルーティング対応</li>
+                            <li>SSG/SSR サポート</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Configuration -->
+            <section class="content-section">
+                <h2><i class="fas fa-cogs"></i> 高度な設定オプション</h2>
+                <div class="tech-specs">
+                    <div class="spec-category">
+                        <h3>基本設定</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>公開ディレクトリ</td>
+                                <td>public/, dist/, build/</td>
+                            </tr>
+                            <tr>
+                                <td>リライトルール</td>
+                                <td>SPA, API プロキシ</td>
+                            </tr>
+                            <tr>
+                                <td>ヘッダー設定</td>
+                                <td>キャッシュ、セキュリティ</td>
+                            </tr>
+                            <tr>
+                                <td>リダイレクト</td>
+                                <td>301, 302 対応</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="spec-category">
+                        <h3>デプロイ設定</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>無視ファイル</td>
+                                <td>.gitignore 連携</td>
+                            </tr>
+                            <tr>
+                                <td>プレビュー</td>
+                                <td>本番前確認</td>
+                            </tr>
+                            <tr>
+                                <td>ターゲット指定</td>
+                                <td>複数環境対応</td>
+                            </tr>
+                            <tr>
+                                <td>バージョン管理</td>
+                                <td>履歴とロールバック</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="content-section">
+                <div class="cta-section" style="background: linear-gradient(135deg, #e8f0ff, #dae8ff);">
+                    <h3>🚀 今すぐ簡単セットアップを始めよう</h3>
+                    <p>Firebase Hostingの簡単設定で、3分後にはあなたのサイトが世界中からアクセス可能に。</p>
+                    <div class="cta-buttons">
+                        <a href="https://console.firebase.google.com" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-cog"></i>
+                            今すぐ開始
+                        </a>
+                        <a href="https://firebase.google.com/docs/hosting/quickstart" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            クイックスタート
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase Site</span>
+                    </div>
+                    <p>Firebase Hostingで構築されたモダンなウェブサイト</p>
+                </div>
+                <div class="footer-section">
+                    <h3>関連リンク</h3>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="fast-delivery.html">高速配信</a></li>
+                        <li><a href="security.html">セキュリティ</a></li>
+                        <li><a href="index.html#features">機能一覧</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Firebase Site. All rights reserved. Made with ❤️ for Firebase Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
