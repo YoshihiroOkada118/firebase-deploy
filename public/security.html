@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セキュリティ詳細 - Firebase Hosting</title>
+    <meta name="description" content="Firebase Hostingの包括的なセキュリティ機能について詳しく解説">
+    <meta name="keywords" content="Firebase, セキュリティ, SSL, HTTPS, 暗号化, 保護">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="セキュリティ詳細 - Firebase Hosting">
+    <meta property="og:description" content="Firebase Hostingの包括的なセキュリティ機能について詳しく解説">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Security-specific styles */
+        .security-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .security-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="shield-pattern" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 10 L35 20 L25 30 L15 20 Z" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23shield-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .security-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .security-shield {
+            font-size: 4rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            animation: shield-pulse 2s infinite;
+        }
+        
+        @keyframes shield-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .security-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .security-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+        }
+        
+        .security-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .security-icon {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+        
+        .security-features {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .best-practices {
+            padding: 80px 0;
+        }
+        
+        .practice-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+        
+        .practice-number {
+            background: #ff6b35;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .security-stats {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-box i {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 1rem 0;
+            margin-top: 70px;
+        }
+        
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb-nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb-nav a:hover {
+            color: #ff6b35;
+        }
+        
+        .breadcrumb-nav .current {
+            color: #ff6b35;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .security-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .practice-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-fire"></i>
+                <span>Firebase Site</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">概要</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">機能</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">お問い合わせ</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-nav">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> ホーム
+                </a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="index.html#features">機能</a>
+                <i class="fas fa-chevron-right"></i>
+                <span class="current">セキュリティ</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Hero Section -->
+    <section class="security-hero">
+        <div class="security-hero-content">
+            <div class="security-shield">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1>Firebase Hostingのセキュリティ</h1>
+            <p>エンタープライズレベルのセキュリティで、あなたのウェブサイトとユーザーを保護します。Google Cloudの最先端セキュリティ技術を活用し、包括的な保護を提供します。</p>
+        </div>
+    </section>
+
+    <!-- Security Features Section -->
+    <section class="security-features">
+        <div class="container">
+            <div class="section-header">
+                <h2>セキュリティ機能</h2>
+                <p>Firebase Hostingが提供する包括的なセキュリティ機能をご紹介します</p>
+            </div>
+            
+            <div class="security-grid">
+                <div class="security-card">
+                    <div class="security-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>自動SSL証明書</h3>
+                    <p>Let's Encryptを使用した無料のSSL証明書を自動で発行・更新。ドメイン検証済み証明書により、全ての通信を暗号化します。</p>
+                    <ul style="margin-top: 1rem; list-style: none; padding-left: 0;">
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>自動発行・更新</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>カスタムドメイン対応</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>ワイルドカード証明書</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>HTTPS強制</h3>
+                    <p>すべてのHTTPリクエストを自動的にHTTPSにリダイレクト。Transport Layer Security (TLS) 1.3を使用した最新の暗号化技術。</p>
+                    <ul style="margin-top: 1rem; list-style: none; padding-left: 0;">
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>TLS 1.3対応</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>HSTS設定</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>自動リダイレクト</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3>DDoS保護</h3>
+                    <p>Google Cloudの分散拒否サービス攻撃（DDoS）保護により、大規模な攻撃からサイトを守ります。</p>
+                    <ul style="margin-top: 1rem; list-style: none; padding-left: 0;">
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>自動検出・防御</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>リアルタイム監視</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>無制限の帯域幅保護</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Firebase Authentication連携</h3>
+                    <p>Firebase Authenticationと統合し、多要素認証、OAuth、匿名認証などの高度な認証機能を提供。</p>
+                    <ul style="margin-top: 1rem; list-style: none; padding-left: 0;">
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>多要素認証（MFA）</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>ソーシャル認証</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>カスタム認証</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>セキュアCDN</h3>
+                    <p>世界中に配置されたセキュアなエッジロケーションから、暗号化されたコンテンツを高速配信。</p>
+                    <ul style="margin-top: 1rem; list-style: none; padding-left: 0;">
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>120+ エッジロケーション</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>キャッシュ暗号化</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>オリジン保護</li>
+                    </ul>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>セキュリティ監視</h3>
+                    <p>24時間365日のセキュリティ監視とリアルタイムアラート。不正アクセスや異常な活動を即座に検出。</p>
+                    <ul style="margin-top: 1rem; list-style: none; padding-left: 0;">
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>リアルタイム監視</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>異常検知</li>
+                        <li><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>セキュリティレポート</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Stats Section -->
+    <section class="security-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">セキュリティ実績</h2>
+                <p style="color: rgba(255,255,255,0.8);">Firebase Hostingの信頼できるセキュリティ実績</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #ff6b35; margin-bottom: 0.5rem;">99.99%</div>
+                    <div class="stat-label" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">アップタイム</div>
+                </div>
+                
+                <div class="stat-box">
+                    <i class="fas fa-lock"></i>
+                    <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #ff6b35; margin-bottom: 0.5rem;">100%</div>
+                    <div class="stat-label" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">HTTPS化率</div>
+                </div>
+                
+                <div class="stat-box">
+                    <i class="fas fa-globe"></i>
+                    <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #ff6b35; margin-bottom: 0.5rem;">120+</div>
+                    <div class="stat-label" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">セキュアエッジ</div>
+                </div>
+                
+                <div class="stat-box">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #ff6b35; margin-bottom: 0.5rem;">24/7</div>
+                    <div class="stat-label" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">セキュリティ監視</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section class="best-practices">
+        <div class="container">
+            <div class="section-header">
+                <h2>セキュリティベストプラクティス</h2>
+                <p>Firebase Hostingでセキュリティを最大化するための推奨事項</p>
+            </div>
+            
+            <div class="practice-item">
+                <div class="practice-number">1</div>
+                <div>
+                    <h3>セキュリティルールの設定</h3>
+                    <p>Firebase Security Rulesを適切に設定し、未認証ユーザーからのアクセスを制限します。最小権限の原則に従い、必要最小限のアクセス権限のみを付与してください。</p>
+                </div>
+            </div>
+            
+            <div class="practice-item">
+                <div class="practice-number">2</div>
+                <div>
+                    <h3>定期的なセキュリティ監査</h3>
+                    <p>Firebase Consoleのセキュリティダッシュボードを定期的に確認し、異常なアクティビティや潜在的な脅威を監視します。セキュリティアラートを有効にして即座に通知を受け取りましょう。</p>
+                </div>
+            </div>
+            
+            <div class="practice-item">
+                <div class="practice-number">3</div>
+                <div>
+                    <h3>強力な認証の実装</h3>
+                    <p>Firebase Authenticationの多要素認証（MFA）を有効にし、パスワードポリシーを強化します。OAuth 2.0とOpenID Connectを使用したソーシャルログインも併用しましょう。</p>
+                </div>
+            </div>
+            
+            <div class="practice-item">
+                <div class="practice-number">4</div>
+                <div>
+                    <h3>セキュリティヘッダーの設定</h3>
+                    <p>Content Security Policy (CSP)、X-Frame-Options、X-Content-Type-Optionsなどのセキュリティヘッダーを適切に設定し、XSS攻撃やクリックジャッキングを防止します。</p>
+                </div>
+            </div>
+            
+            <div class="practice-item">
+                <div class="practice-number">5</div>
+                <div>
+                    <h3>データ暗号化</h3>
+                    <p>機密データは転送時と保存時の両方で暗号化します。Firebase Hostingは自動的にHTTPSを使用しますが、カスタムAPIエンドポイントでも同様の保護を実装してください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: #f8f9fa; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">セキュアなウェブサイトを始めましょう</h2>
+            <p style="margin-bottom: 2rem; color: #666; font-size: 1.1rem;">Firebase Hostingで、エンタープライズレベルのセキュリティを手軽に実現</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                    ホームに戻る
+                </a>
+                <a href="index.html#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase Site</span>
+                    </div>
+                    <p>Firebase Hostingで構築されたモダンなウェブサイト</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <ul>
+                        <li><a href="#">ウェブホスティング</a></li>
+                        <li><a href="#">データベース</a></li>
+                        <li><a href="#">認証</a></li>
+                        <li><a href="#">ストレージ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>セキュリティ</h3>
+                    <ul>
+                        <li><a href="#" onclick="scrollToSection('security-features')">SSL証明書</a></li>
+                        <li><a href="#" onclick="scrollToSection('security-features')">DDoS保護</a></li>
+                        <li><a href="#" onclick="scrollToSection('best-practices')">ベストプラクティス</a></li>
+                        <li><a href="#" onclick="scrollToSection('security-stats')">セキュリティ実績</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>サポート</h3>
+                    <ul>
+                        <li><a href="#">ドキュメント</a></li>
+                        <li><a href="#">チュートリアル</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="index.html#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Firebase Site. All rights reserved. Made with ❤️ for Firebase Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        // Smooth scroll to section functionality for this page
+        function scrollToSection(sectionId) {
+            const element = document.querySelector('.' + sectionId) || document.getElementById(sectionId);
+            if (element) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const elementPosition = element.offsetTop - navbarHeight;
+                
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Make scrollToSection available globally
+        window.scrollToSection = scrollToSection;
+    </script>
+</body>
+</html>
