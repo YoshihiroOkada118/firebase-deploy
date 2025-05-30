@@ -407,6 +407,20 @@ section {
 .feature-card p {
     color: #666;
     line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* 詳細ページへのボタンを常時表示 */
+.feature-card .btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    transition: all 0.3s ease;
+}
+
+.feature-card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
 }
 
 /* Contact Section */
